@@ -1,9 +1,19 @@
-const App = () => {
+import Sidebar from "./components/Sidebar";
+
+function App() {
   return (
-    <div className="h-screen w-full bg-black text-white flex items-center justify-center">
-      <h1 className="font-mono text-9xl uppercase">IRIS-Go</h1>
+    <div className="flex h-screen w-full bg-black text-slate-300 font-mono overflow-hidden">
+      <div className="relative z-10 flex w-full h-full">
+        <Sidebar />
+
+        <main className="flex-1 flex flex-col relative border-l border-black">
+          <div className="flex items-center justify-center h-full text-cyan-400">
+            [ Main Chat Area Pending ]
+          </div>
+        </main>
+      </div>
     </div>
   );
-};
+}
 
 export default App;
