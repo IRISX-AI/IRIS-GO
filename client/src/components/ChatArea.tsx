@@ -53,7 +53,7 @@ export default function ChatArea() {
         {/* Suggestion Cards Grid */}
         <div className="grid grid-cols-2 gap-4 w-full max-w-2xl">
           {/* Card 1 */}
-          <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-cyan-400/40 transition-all cursor-pointer group">
+          <div className="p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-cyan-400/40 transition-all cursor-pointer group">
             <Globe className="text-blue-400 mb-3" size={20} />
             <h3 className="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-400 transition-colors">
               Clone a Website
@@ -64,7 +64,7 @@ export default function ChatArea() {
           </div>
 
           {/* Card 2 */}
-          <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-cyan-400/40 transition-all cursor-pointer group">
+          <div className="p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-cyan-400/40 transition-all cursor-pointer group">
             <TerminalSquare className="text-orange-400 mb-3" size={20} />
             <h3 className="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-400 transition-colors">
               Fix my Codebase
@@ -75,7 +75,7 @@ export default function ChatArea() {
           </div>
 
           {/* Card 3 */}
-          <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-cyan-400/40 transition-all cursor-pointer group">
+          <div className="p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-cyan-400/40 transition-all cursor-pointer group">
             <Search className="text-purple-400 mb-3" size={20} />
             <h3 className="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-400 transition-colors">
               Research Competitors
@@ -86,7 +86,7 @@ export default function ChatArea() {
           </div>
 
           {/* Card 4 */}
-          <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-cyan-400/40 transition-all cursor-pointer group">
+          <div className="p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-cyan-400/40 transition-all cursor-pointer group">
             <Folder className="text-yellow-400 mb-3" size={20} />
             <h3 className="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-400 transition-colors">
               Organize Files
@@ -114,10 +114,7 @@ export default function ChatArea() {
               <Mic size={18} />
             </button>
             <button className="ml-2 p-2 bg-cyan-400 text-black rounded-xl hover:bg-cyan-300 transition-colors shadow-[0_0_10px_rgba(34,211,238,0.3)]">
-              <Send
-                size={18}
-                className="translate-x-[-1px] translate-y-[1px]"
-              />
+              <Send size={18} className="-translate-x-px translate-y-px" />
             </button>
           </div>
         </div>
