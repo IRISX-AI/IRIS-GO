@@ -1,4 +1,3 @@
-// src/components/ChatArea.tsx
 import { useState, useRef, useEffect } from "react";
 import {
   Paperclip,
@@ -19,7 +18,6 @@ export default function ChatArea() {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom when messages change
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -31,13 +29,11 @@ export default function ChatArea() {
   const handleSend = () => {
     if (!inputValue.trim()) return;
 
-    // 1. Add User Message
     const userMsg = { id: Date.now(), role: "user", content: inputValue };
     setMessages((prev) => [...prev, userMsg]);
     setInputValue("");
     setIsTyping(true);
 
-    // 2. Simulate AI Thinking and Responding
     setTimeout(() => {
       const aiResponse = {
         id: Date.now() + 1,
@@ -70,7 +66,6 @@ export default function ChatArea() {
     }, 2000); // 2 second fake delay
   };
 
-  // Handle Enter key press
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSend();
@@ -79,7 +74,6 @@ export default function ChatArea() {
 
   return (
     <div className="flex-1 flex flex-col h-full bg-black/10 relative">
-      {/* Header */}
       <header className="h-14 flex items-center justify-between px-6 border-b border-white/5 shrink-0 bg-black/50 backdrop-blur-md z-10">
         <div className="flex items-center gap-2 text-cyan-400 text-sm font-semibold">
           <div
@@ -101,10 +95,8 @@ export default function ChatArea() {
         </div>
       </header>
 
-      {/* Dynamic Content Area (Empty State OR Chat Feed) */}
       <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col">
         {messages.length === 0 ? (
-          /* Empty State Hero */
           <div className="flex-1 flex flex-col items-center justify-center p-6 mt-10">
             <div className="w-16 h-16 border border-cyan-400/30 rounded-2xl flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(34,211,238,0.1)]">
               <Zap className="text-cyan-400" size={32} />
@@ -139,7 +131,6 @@ export default function ChatArea() {
             </div>
           </div>
         ) : (
-          /* Chat Feed */
           <div className="p-6 space-y-8 pb-32">
             {messages.map((msg) => (
               <div
@@ -195,7 +186,6 @@ export default function ChatArea() {
               </div>
             ))}
 
-            {/* Loading Indicator */}
             {isTyping && (
               <div className="flex w-full justify-start">
                 <div className="flex gap-4">
@@ -250,7 +240,6 @@ export default function ChatArea() {
           </div>
         </div>
 
-        {/* Footer Security Text */}
         <div className="text-center mt-3 flex justify-center items-center gap-2 text-[10px] text-slate-600 font-mono tracking-widest uppercase bg-black/96">
           <span className="flex items-center gap-1">
             <Shield size={10} /> Local
