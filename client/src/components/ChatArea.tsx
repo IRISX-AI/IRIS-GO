@@ -1,22 +1,74 @@
+// src/components/ChatArea.tsx
 import {
   Paperclip,
   Mic,
   Send,
-  Globe,
-  TerminalSquare,
-  Search,
-  Folder,
   Shield,
-  Zap,
+  Terminal,
+  CheckCircle2,
+  Globe,
+  Folder,
+  Cpu,
 } from "lucide-react";
 
+const MOCK_CHAT = [
+  {
+    id: 1,
+    role: "user",
+    content:
+      "Clone the homepage of stripe.com, extract the main hero section, and save it locally in a new React component.",
+  },
+  {
+    id: 2,
+    role: "assistant",
+    actions: [
+      {
+        agent: "Master",
+        icon: Cpu,
+        color: "text-emerald-500",
+        text: "Task received. Routing to Browser and File agents.",
+      },
+      {
+        agent: "Browser",
+        icon: Globe,
+        color: "text-cyan-500",
+        text: "Navigating to https://stripe.com via PinchTab...",
+      },
+      {
+        agent: "Browser",
+        icon: Globe,
+        color: "text-cyan-500",
+        text: "DOM Scraped. Compressed to 740 tokens.",
+      },
+      {
+        agent: "Coder",
+        icon: Terminal,
+        color: "text-orange-500",
+        text: "Parsing HTML/CSS into React + Tailwind format.",
+      },
+      {
+        agent: "File",
+        icon: Folder,
+        color: "text-blue-500",
+        text: "Created ./components/StripeHero.tsx",
+      },
+    ],
+    content:
+      "Task complete. I've scraped the Stripe hero section, converted the structure into a React component with Tailwind classes, and saved it to your local filesystem. You can find it in `components/StripeHero.tsx`. Let me know if you want me to run the dev server to preview it.",
+  },
+];
+
 export default function ChatArea() {
+  // Simulating state - if this array has items, we show chat. If empty, we show the Hero grid.
+  const messages = MOCK_CHAT;
+
   return (
-    <div className="flex-1 flex flex-col h-full bg-black/15 relative">
-      <header className="h-14 flex items-center justify-between px-6 border-b border-white/5">
+    <div className="flex-1 flex flex-col h-full bg-black/96 relative">
+      {/* Header */}
+      <header className="h-14 flex items-center justify-between px-6 border-b border-white/5 shrink-0 bg-black/50 backdrop-blur-md z-10">
         <div className="flex items-center gap-2 text-cyan-400 text-sm font-semibold">
           <div className="w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_5px_#10b981]"></div>
-          New Chat
+          Clone Stripe.com
         </div>
         <div className="flex items-center gap-3 text-xs font-medium tracking-wide">
           <span className="flex items-center gap-1 px-3 py-1 rounded-full border border-emerald-500/30 text-emerald-400 bg-emerald-500/10">
@@ -32,63 +84,76 @@ export default function ChatArea() {
         </div>
       </header>
 
-      <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center p-6">
-        <div className="w-16 h-16 border border-cyan-400/30 rounded-2xl flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(34,211,238,0.1)]">
-          <Zap className="text-cyan-400" size={32} />
-        </div>
+      {/* Main Chat Feed */}
+      <div className="flex-1 overflow-y-auto p-6 space-y-8 custom-scrollbar">
+        {messages.map((msg) => (
+          <div
+            key={msg.id}
+            className={`flex w-full ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+          >
+            {/* User Message Bubble */}
+            {msg.role === "user" && (
+              <div className="max-w-[70%] bg-white/5 border border-white/10 text-slate-200 px-5 py-3.5 rounded-2xl rounded-tr-sm text-sm leading-relaxed shadow-lg">
+                {msg.content}
+              </div>
+            )}
 
-        <h1 className="text-4xl font-bold tracking-widest text-cyan-400 mb-4 drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]">
-          IRIS GO
-        </h1>
-        <p className="text-slate-400 text-center max-w-md text-sm mb-12 leading-relaxed">
-          Your local AI workforce. Send a message and the team gets to work —
-          browser, files, OS, code, research. All at once.
-        </p>
+            {/* Assistant Message Bubble */}
+            {msg.role === "assistant" && (
+              <div className="max-w-[85%] flex gap-4">
+                {/* Agent Avatar */}
+                <div className="w-8 h-8 shrink-0 rounded-lg bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center mt-1 shadow-[0_0_10px_rgba(34,211,238,0.1)]">
+                  <div className="w-2.5 h-2.5 bg-cyan-400 rounded-sm"></div>
+                </div>
 
-        <div className="grid grid-cols-2 gap-4 w-full max-w-2xl">
-          <div className="p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-cyan-400/40 transition-all cursor-pointer group">
-            <Globe className="text-blue-400 mb-3" size={20} />
-            <h3 className="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-400 transition-colors">
-              Clone a Website
-            </h3>
-            <p className="text-xs text-slate-500">
-              Scrape, redesign and deploy any site
-            </p>
+                <div className="flex flex-col gap-3">
+                  {/* Agent Action Log (The "Thinking" Process) */}
+                  {msg.actions && (
+                    <div className="flex flex-col gap-2 p-3 rounded-xl bg-black/50 border border-white/5 font-mono text-xs w-fit min-w-[300px]">
+                      <div className="text-slate-500 mb-1 flex items-center gap-2 uppercase tracking-wider text-[10px]">
+                        <Terminal size={12} /> System Execution Log
+                      </div>
+                      {msg.actions.map((action, idx) => {
+                        const Icon = action.icon;
+                        return (
+                          <div
+                            key={idx}
+                            className="flex items-start gap-3 text-slate-400"
+                          >
+                            <Icon
+                              size={14}
+                              className={`mt-0.5 ${action.color}`}
+                            />
+                            <div className="flex flex-col">
+                              <span className="text-slate-300">
+                                [{action.agent}]
+                              </span>
+                              <span>{action.text}</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                      <div className="flex items-center gap-2 mt-2 pt-2 border-t border-white/5 text-emerald-400">
+                        <CheckCircle2 size={12} /> execution_complete
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Final Text Response */}
+                  <div className="text-slate-300 text-sm leading-relaxed">
+                    {msg.content}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-
-          <div className="p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-cyan-400/40 transition-all cursor-pointer group">
-            <TerminalSquare className="text-orange-400 mb-3" size={20} />
-            <h3 className="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-400 transition-colors">
-              Fix my Codebase
-            </h3>
-            <p className="text-xs text-slate-500">
-              Find bugs, patch and open a PR
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-cyan-400/40 transition-all cursor-pointer group">
-            <Search className="text-purple-400 mb-3" size={20} />
-            <h3 className="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-400 transition-colors">
-              Research Competitors
-            </h3>
-            <p className="text-xs text-slate-500">
-              Full intelligence report on anyone
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-cyan-400/40 transition-all cursor-pointer group">
-            <Folder className="text-yellow-400 mb-3" size={20} />
-            <h3 className="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-400 transition-colors">
-              Organize Files
-            </h3>
-            <p className="text-xs text-slate-500">
-              Clean, sort and manage filesystem
-            </p>
-          </div>
-        </div>
+        ))}
+        {/* Invisible div to pad the bottom so scrolling doesn't hide behind the input bar */}
+        <div className="h-10"></div>
       </div>
 
-      <div className="p-6 pt-0 w-full max-w-4xl mx-auto">
+      {/* Sticky Input Area */}
+      <div className="p-6 pt-0 w-full max-w-4xl mx-auto shrink-0 bg-black/96">
         <div className="relative flex items-center bg-black/40 border border-white/10 rounded-2xl p-2 focus-within:border-cyan-400/50 focus-within:shadow-[0_0_15px_rgba(34,211,238,0.1)] transition-all">
           <input
             type="text"
@@ -103,11 +168,15 @@ export default function ChatArea() {
               <Mic size={18} />
             </button>
             <button className="ml-2 p-2 bg-cyan-400 text-black rounded-xl hover:bg-cyan-300 transition-colors shadow-[0_0_10px_rgba(34,211,238,0.3)]">
-              <Send size={18} className="-translate-x-px translate-y-px" />
+              <Send
+                size={18}
+                className="translate-x-[-1px] translate-y-[1px]"
+              />
             </button>
           </div>
         </div>
 
+        {/* Footer Security Text */}
         <div className="text-center mt-3 flex justify-center items-center gap-2 text-[10px] text-slate-600 font-mono tracking-widest uppercase">
           <span className="flex items-center gap-1">
             <Shield size={10} /> Local
