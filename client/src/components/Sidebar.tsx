@@ -9,7 +9,7 @@ import {
 
 export default function Sidebar() {
   return (
-    <div className="flex h-full border-r border-white bg-black/10 backdrop-blur-sm z-20">
+    <div className="flex h-full border-r border-white bg-white/10 backdrop-blur-sm z-20">
       <div className="w-16 flex flex-col items-center py-4 border-r border-black/50 bg-black/10">
         <div className="w-10 h-10 rounded-xl border border-cyan-400/30 flex items-center justify-center mb-8 shadow-[0_0_15px_rgba(34,211,238,0.15)]">
           <div className="w-4 h-4 bg-cyan-400 rounded-sm shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
@@ -40,7 +40,7 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <div className="w-64 flex flex-col h-full bg-black/60 p-4 overflow-y-auto">
+      <div className="w-64 flex flex-col h-full bg-black/50 p-4 overflow-y-auto">
         <div className="mb-6">
           <h2 className="text-xs tracking-widest text-slate-100 mb-4 font-semibold uppercase">
             IRIS GO
