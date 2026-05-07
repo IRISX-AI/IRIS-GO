@@ -2,7 +2,7 @@ import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
-    <div className="flex h-screen w-full bg-black text-slate-300 font-mono overflow-hidden">
+    <div className="flex h-screen w-full bg-black/90 text-slate-300 font-mono overflow-hidden">
       <div className="relative z-10 flex w-full h-full">
         <Sidebar />
 
