@@ -12,8 +12,7 @@ import {
 
 export default function ChatArea() {
   return (
-    <div className="flex-1 flex flex-col h-full bg-black/96 relative">
-      {/* Header */}
+    <div className="flex-1 flex flex-col h-full bg-black/15 relative">
       <header className="h-14 flex items-center justify-between px-6 border-b border-white/5">
         <div className="flex items-center gap-2 text-cyan-400 text-sm font-semibold">
           <div className="w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_5px_#10b981]"></div>
