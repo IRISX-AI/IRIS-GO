@@ -32,14 +32,11 @@ export default function ChatArea() {
         </div>
       </header>
 
-      {/* Main Hero (Empty State) */}
       <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center p-6">
-        {/* Logo/Icon */}
         <div className="w-16 h-16 border border-cyan-400/30 rounded-2xl flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(34,211,238,0.1)]">
           <Zap className="text-cyan-400" size={32} />
         </div>
 
-        {/* Title & Subtitle */}
         <h1 className="text-4xl font-bold tracking-widest text-cyan-400 mb-4 drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]">
           IRIS GO
         </h1>
@@ -48,9 +45,7 @@ export default function ChatArea() {
           browser, files, OS, code, research. All at once.
         </p>
 
-        {/* Suggestion Cards Grid */}
         <div className="grid grid-cols-2 gap-4 w-full max-w-2xl">
-          {/* Card 1 */}
           <div className="p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-cyan-400/40 transition-all cursor-pointer group">
             <Globe className="text-blue-400 mb-3" size={20} />
             <h3 className="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-400 transition-colors">
@@ -61,7 +56,6 @@ export default function ChatArea() {
             </p>
           </div>
 
-          {/* Card 2 */}
           <div className="p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-cyan-400/40 transition-all cursor-pointer group">
             <TerminalSquare className="text-orange-400 mb-3" size={20} />
             <h3 className="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-400 transition-colors">
@@ -72,7 +66,6 @@ export default function ChatArea() {
             </p>
           </div>
 
-          {/* Card 3 */}
           <div className="p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-cyan-400/40 transition-all cursor-pointer group">
             <Search className="text-purple-400 mb-3" size={20} />
             <h3 className="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-400 transition-colors">
@@ -83,7 +76,6 @@ export default function ChatArea() {
             </p>
           </div>
 
-          {/* Card 4 */}
           <div className="p-4 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-cyan-400/40 transition-all cursor-pointer group">
             <Folder className="text-yellow-400 mb-3" size={20} />
             <h3 className="text-sm font-semibold text-slate-200 mb-1 group-hover:text-cyan-400 transition-colors">
@@ -96,7 +88,6 @@ export default function ChatArea() {
         </div>
       </div>
 
-      {/* Sticky Input Area */}
       <div className="p-6 pt-0 w-full max-w-4xl mx-auto">
         <div className="relative flex items-center bg-black/40 border border-white/10 rounded-2xl p-2 focus-within:border-cyan-400/50 focus-within:shadow-[0_0_15px_rgba(34,211,238,0.1)] transition-all">
           <input
@@ -117,7 +108,6 @@ export default function ChatArea() {
           </div>
         </div>
 
-        {/* Footer Security Text */}
         <div className="text-center mt-3 flex justify-center items-center gap-2 text-[10px] text-slate-600 font-mono tracking-widest uppercase">
           <span className="flex items-center gap-1">
             <Shield size={10} /> Local
