@@ -1,4 +1,3 @@
-// src/components/ChatArea.tsx
 import {
   Paperclip,
   Mic,
