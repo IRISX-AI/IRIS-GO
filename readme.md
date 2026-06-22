@@ -345,6 +345,6 @@ _AI Systems Engineer · Building in Public_
 
 _IRIS GO — Chat karo. System obeys._
 
-**Made with ❤️ by Harsh Pandey · India 🇮🇳**
+**Made with ❤️ by Harsh · India 🇮🇳**
 
 </div>
